@@ -1,95 +1,415 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f3f7fa;
+    display: flex;
+    height: 100vh;
+    color: #333;
+    flex-direction: row;
+    /* Flex direção padrão para telas grandes */
+    overflow-x: hidden;
+    /* Impede rolagem horizontal */
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background-color: #1f8f93;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 1rem;
+    transition: 0.3s;
+    position: fixed;
+    /* Fixando a sidebar */
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 100;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 2rem;
+}
+
+.logo img {
+    width: 45px;
+    height: 45px;
+}
+
+.logo h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    padding: 12px 0;
+    display: block;
+    border-radius: 8px;
+    transition: 0.3s;
+    font-weight: 500;
+}
+
+.menu a:hover,
+.menu a.active {
+    background-color: #3c3c3c;
+    padding-left: 12px;
+}
+
+.content {
+    flex: 1;
+    padding: 2rem 3rem;
+    background-color: #f3f7fa;
+    margin-left: 250px;
+    /* Dando espaço para a sidebar */
+    transition: margin-left 0.3s;
+    overflow-x: hidden;
+    /* Evita rolagem horizontal */
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.header h1 {
+    font-size: 1.6rem;
+    color: #1e3a5f;
+    margin: 0;
+}
+
+table {
+    width: 100%;
+    /* Garante que a tabela ocupe 100% da largura */
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    table-layout: auto;
+    /* Permite que a tabela ajuste seu conteúdo automaticamente */
+    overflow-x: auto;
+    /* Permite rolagem horizontal caso a tabela seja larga */
+}
+
+th,
+td {
+    text-align: left;
+    padding: 14px 16px;
+    word-wrap: break-word;
+    /* Força a quebra de linha para textos longos */
+    overflow-wrap: break-word;
+    /* Complementa o word-wrap */
+    white-space: nowrap;
+    /* Impede a quebra de texto */
+}
+
+.content {
+    overflow-x: auto;
+    /* Se necessário, permite rolagem horizontal */
+}
+
+th {
+    background-color: #1f8f93;
+    color: white;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+tr:nth-child(even) {
+    background-color: #f3f7fa;
+}
+
+td {
+    font-size: 0.9rem;
+}
+
+.status {
+    font-weight: 600;
+    padding: 6px 10px;
+    border-radius: 8px;
+    display: inline-block;
+}
+
+.status.aberto {
+    background-color: #ffcc80;
+    color: #8a6d00;
+}
+
+.status.andamento {
+    background-color: #90caf9;
+    color: #0d47a1;
+}
+
+.status.concluido {
+    background-color: #a5d6a7;
+    color: #1b5e20;
+}
+
+a.download-link {
+    color: #1f8f93;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+a.download-link:hover {
+    text-decoration: underline;
+}
+
+/* Botão de sair (fora da tabela) */
+.button-logout {
+    background-color: #1f8f93;
+    color: white;
+    border: none;
+    padding: 14px 20px;
+    font-size: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    width: 100%;
+    /* Garante que o botão ocupe toda a largura disponível */
+    margin-top: 20px;
+    /* Adiciona uma margem superior para separá-lo do conteúdo */
+    z-index: 999;
+    /* Garante que o botão seja sobreposto por outros elementos */
+}
+
+.button-logout:hover {
+    background-color: #357a7c;
+    transform: scale(1.03);
+}
+
+#msg {
+    margin-bottom: 1.2rem;
+    font-weight: 500;
+}
+
+/* Responsividade para telas menores */
+
+/* Para telas menores que 768px */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+        /* Empilha o layout verticalmente */
+    }
+
+    .sidebar {
+        width: 100%;
+        /* Sidebar ocupa 100% da largura */
+        position: absolute;
+        /* Torna a sidebar fixa no topo */
+        top: 0;
+        left: -100%;
+        /* Inicialmente oculta */
+        height: 100%;
+        /* A altura da sidebar vai ocupar toda a tela */
+        z-index: 999;
+        padding: 1rem;
+        transition: left 0.3s;
+        /* Animação suave para abertura */
+    }
+
+    .sidebar.active {
+        left: 0;
+        /* Sidebar fica visível quando ativa */
+    }
+
+    .content {
+        margin-left: 0;
+        /* Remove a margem da sidebar em telas pequenas */
+        padding: 1.5rem;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header h1 {
+        font-size: 1.4rem;
+        /* Ajuste o tamanho da fonte do título */
+    }
+
+    table {
+        font-size: 0.85rem;
+        /* Menor tamanho de fonte */
+        width: 100%;
+        overflow-x: auto;
+        /* Permite rolagem apenas horizontal para a tabela, se necessário */
+        margin-bottom: 20px;
+        /* Adiciona espaço abaixo da tabela */
+    }
+
+    th,
+    td {
+        padding: 10px 12px;
+        /* Menor padding */
+    }
+
+    .menu a {
+        font-size: 0.85rem;
+        /* Ajuste o tamanho da fonte no menu */
+        padding: 10px;
+    }
+
+    /* Hamburger Menu */
+    .hamburger {
+        display: block;
+        cursor: pointer;
+        font-size: 2rem;
+        color: #fff;
+    }
+
+    .button-logout {
+        margin-top: 20px;
+        /* Adiciona um espaço entre a tabela e o botão */
+    }
+}
+
+/* Para dispositivos móveis muito pequenos (ex: celulares com menos de 400px de largura) */
+@media (max-width: 400px) {
+    .logo h2 {
+        font-size: 1rem;
+        /* Menor título */
+    }
+
+    .menu a {
+        padding: 10px 8px;
+        /* Ajuste do tamanho do padding */
+    }
+
+    .content {
+        padding: 1rem;
+        /* Menos padding no conteúdo */
+    }
+
+    .header h1 {
+        font-size: 1.2rem;
+        /* Tamanho menor para cabeçalhos em telas muito pequenas */
+    }
+}
+
 .modal {
-    position: fixed; 
-    inset: 0; 
-    display:flex; 
-    align-items:center; 
-    justify-content:center; 
-    background: rgba(0,0,0,0.5); 
-    z-index:1000; 
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
 }
-.modal.hidden { 
-    display:none; 
+
+.modal.hidden {
+    display: none;
 }
-.modal-content { 
-    width: 560px; 
-    max-width:95%; 
-    background:#fff; 
-    border-radius:8px; 
-    padding:16px; 
-    box-shadow: 0 8px 30px rgba(0,0,0,0.2); 
+
+.modal-content {
+    width: 560px;
+    max-width: 95%;
+    background: #fff;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
 }
-.chat-box { 
-    height: 320px; 
-    overflow-y:auto; 
-    border:1px solid #e6e6e6; 
-    padding:10px; 
-    border-radius:6px; 
-    background:#fafafa; 
+
+.chat-box {
+    height: 320px;
+    overflow-y: auto;
+    border: 1px solid #e6e6e6;
+    padding: 10px;
+    border-radius: 6px;
+    background: #fafafa;
 }
-.msg-ia { 
-    background:#f1f8ff; 
-    padding:8px; 
-    margin:6px 0; 
-    border-radius:6px; 
+
+.msg-ia {
+    background: #f1f8ff;
+    padding: 8px;
+    margin: 6px 0;
+    border-radius: 6px;
 }
-.msg-user { 
-    background:#e9ffe8; 
-    padding:8px; 
-    margin:6px 0; 
-    border-radius:6px; 
-    text-align:right; 
+
+.msg-user {
+    background: #e9ffe8;
+    padding: 8px;
+    margin: 6px 0;
+    border-radius: 6px;
+    text-align: right;
 }
-.chat-input-area { 
-    display:flex; 
-    gap:8px; 
-    margin-top:10px; 
+
+.chat-input-area {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
 }
-.chat-input-area input { 
-    flex:1; 
-    padding:10px; 
-    border-radius:6px; 
-    border:1px solid #ddd; 
+
+.chat-input-area input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
 }
-.chat-input-area button { 
-    padding:10px 14px; 
-    border:none; 
-    background:#2b7a78; 
-    color:#fff; 
-    border-radius:6px; 
-    cursor:pointer; 
+
+.chat-input-area button {
+    padding: 10px 14px;
+    border: none;
+    background: #2b7a78;
+    color: #fff;
+    border-radius: 6px;
+    cursor: pointer;
 }
-.modal-header { 
-    display:flex; 
-    justify-content:space-between; 
-    align-items:center; 
-    margin-bottom:8px; 
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
 }
-.btn-secondary { 
-    background:#e6e6e6; 
-    color:#333; 
-    border-radius:6px; 
-    padding:8px 10px; 
-    border:none; 
-    cursor:pointer; 
+
+.btn-secondary {
+    background: #e6e6e6;
+    color: #333;
+    border-radius: 6px;
+    padding: 8px 10px;
+    border: none;
+    cursor: pointer;
 }
-.action-buttons button { 
-    margin-right:6px; 
+
+.action-buttons button {
+    margin-right: 6px;
 }
-.table-actions button { 
-    padding:6px 8px; 
-    border-radius:6px; 
-    border:none; 
-    cursor:pointer; 
+
+.table-actions button {
+    padding: 6px 8px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
 }
-.btn-open-chat { 
-    background:#007bff; 
-    color:#fff; 
+
+.btn-open-chat {
+    background: #007bff;
+    color: #fff;
 }
-.btn-resolved { 
-    background:#4caf50; 
-    color:#fff; 
+
+.btn-resolved {
+    background: #4caf50;
+    color: #fff;
 }
+
 .btn-notresolved {
-    background:#ff5252; 
-    color:#fff; 
+    background: #ff5252;
+    color: #fff;
 }

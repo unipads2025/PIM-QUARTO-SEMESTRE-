@@ -13,6 +13,7 @@ body {
 .container {
   display: flex;
   width: 100%;
+  transition: all 0.3s ease;
 }
 
 /* Lado esquerdo */
@@ -158,4 +159,21 @@ body {
 
 .form-box a:hover {
   text-decoration: underline;
+}
+
+/* MEDIA QUERIES PARA RESPONSIVIDADE */
+
+/* Para telas pequenas (móveis) */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column; /* Deixe a tela ser empilhada (uma coluna) */
+  }
+
+  .left {
+    display: none; /* Esconde o lado esquerdo */
+  }
+
+  .right {
+    width: 100%; /* Garante que o lado direito ocupe toda a largura */
+  }
 }
