@@ -1,4 +1,5 @@
-PIM-QUARTO-SEMESTRE - README
+README
+
 Este é o repositório do Projeto Integrador de Sistemas desenvolvido para o quarto semestre do
 curso de Tecnologia em Análise e Desenvolvimento de Sistemas.
 Descrição
