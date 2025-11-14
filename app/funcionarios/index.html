@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Synapse Medical - Painel Funcionário</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="sidebar">
+    <div class="logo">
+      <img src="/app/funcionarios/assets/logo.png" alt="Logo Synapse">
+      <h2>SYNAPSE<br>MEDICAL</h2>
+    </div>
+    <div class="menu">
+      <a href="#" class="active">Gestão de Chamados</a>
+      <a href="#" onclick="sair()">Sair</a>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="header">
+      <h1>Gestão de Chamados - Funcionário</h1>
+    </div>
+    <p>Gerencie os chamados e acompanhe os status em tempo real.</p>
+
+    <div class="chamados-container">
+      <div class="grafico">
+        <h3>Total de Chamados</h3>
+        <canvas id="graficoChamados"></canvas>
+      </div>
+      <div class="lista-chamados">
+        <div class="cabecalho">
+          <span>Categoria</span>
+          <span>Responsável</span>
+          <span>Prioridade</span>
+        </div>
+        <div id="listaChamados"></div>
+      </div>
+    </div>
+
+    <div class="estatisticas">
+      <h3>Estatísticas por Técnico</h3>
+      <div id="estatisticasConteudo"></div>
+    </div>
+  </div>
+
+  <!-- ✅ Importação obrigatória para o gráfico -->
+  <script src="../assets/libs/chart.js"></script>
+
+  <!-- Seu script -->
+  <script src="js/script.js"></script>
+</body>
+</html>

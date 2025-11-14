@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meus Chamados</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/meus-chamados.css">
+
+  <!-- Estilos mínimos do modal (pode mover pro CSS principal) -->
+  <style>
+    .modal { position: fixed; inset: 0; display:flex; align-items:center; justify-content:center; background: rgba(0,0,0,0.5); z-index:1000; }
+    .modal.hidden { display:none; }
+    .modal-content { width: 560px; max-width:95%; background:#fff; border-radius:8px; padding:16px; box-shadow: 0 8px 30px rgba(0,0,0,0.2); }
+    .chat-box { height: 320px; overflow-y:auto; border:1px solid #e6e6e6; padding:10px; border-radius:6px; background:#fafafa; }
+    .msg-ia { background:#f1f8ff; padding:8px; margin:6px 0; border-radius:6px; }
+    .msg-user { background:#e9ffe8; padding:8px; margin:6px 0; border-radius:6px; text-align:right; }
+    .chat-input-area { display:flex; gap:8px; margin-top:10px; }
+    .chat-input-area input { flex:1; padding:10px; border-radius:6px; border:1px solid #ddd; }
+    .chat-input-area button { padding:10px 14px; border:none; background:#2b7a78; color:#fff; border-radius:6px; cursor:pointer; }
+    .modal-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
+    .btn-secondary { background:#e6e6e6; color:#333; border-radius:6px; padding:8px 10px; border:none; cursor:pointer; }
+    .action-buttons button { margin-right:6px; }
+    .table-actions button { padding:6px 8px; border-radius:6px; border:none; cursor:pointer; }
+    .btn-open-chat { background:#007bff; color:#fff; }
+    .btn-resolved { background:#4caf50; color:#fff; }
+    .btn-notresolved { background:#ff5252; color:#fff; }
+  </style>
+</head>
+<body>
+
+  <div class="sidebar">
+    <div class="logo">
+      <img src="../../app/chamados/assets/logo.png" alt="Logo Synapse" style="max-width:110px;">
+      <h2 id="usuarioLogadoNome"></h2>
+    </div>
+
+    <div class="menu">
+      <a href="index.html">Abertura de Chamado</a>
+      <a href="#" class="active">Meus Chamados</a>
+      <a href="#" id="btnLogout" class="logout">Sair</a>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="header">
+      <h1>Meus Chamados</h1>
+    </div>
+
+    <table id="tabelaChamados">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Categoria</th>
+          <th>Descrição</th>
+          <th>Prioridade</th>
+          <th>Técnico</th>
+          <th>Status</th>
+          <th>Data</th>
+          <th>Anexo</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td colspan="9" style="text-align:center;">Carregando chamados...</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- MODAL CHAT IA (Modelo B) -->
+  <div id="iaModal" class="modal hidden" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true">
+      <div class="modal-header">
+        <h3>Assistente IA - Conversa</h3>
+        <div>
+          <button class="btn-secondary" onclick="fecharIA()">Fechar</button>
+        </div>
+      </div>
+
+      <div id="chatIA" class="chat-box"></div>
+
+      <div class="chat-input-area">
+        <input id="msgIA" placeholder="Descreva mais detalhes do problema..." />
+        <button id="btnSendIA" onclick="enviarMsgIA()">Enviar</button>
+      </div>
+
+      <div style="display:flex; justify-content:space-between; margin-top:10px;">
+        <div>
+          <button id="btnSalvarResposta" class="btn-secondary" onclick="enviarRespostaAoCliente()">Enviar resposta ao cliente</button>
+        </div>
+        <div class="action-buttons">
+          <button class="btn-resolved" id="btnMarcarResolvidoModal" onclick="marcarComoResolvidoModal()">Marcar como Resolvido</button>
+          <button class="btn-notresolved" id="btnMarcarNaoResolvidoModal" onclick="marcarComoNaoResolvidoModal()">Não Resolvido</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/meus-chamados.js"></script>
+</body>
+</html>

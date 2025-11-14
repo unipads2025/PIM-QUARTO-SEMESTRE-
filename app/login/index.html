@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Synapse Medical - Login</title>
+
+  <!-- Fonte -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div class="container">
+    <!-- Lado esquerdo -->
+    <div class="left">
+      <div class="left-content">
+        <h1>SOLUÇÕES<br>RÁPIDAS E<br>INTELIGENTES</h1>
+      </div>
+    </div>
+
+    <!-- Lado direito -->
+    <div class="right">
+      <div class="logo">
+        <img src="./assets/logo.png" alt="Logo Synapse" />
+      </div>
+
+      <h2>SYNAPSE <span>MEDICAL</span></h2>
+      <div id="msg" class="message">Escolha seu tipo de acesso:</div>
+
+      <!-- Escolha de perfil -->
+      <div class="user-type">
+        <button onclick="escolherTipo('cliente')">Sou Cliente</button>
+        <button onclick="escolherTipo('funcionario')">Sou funcionário</button>
+      </div>
+
+      <!-- Formulário de login oculto -->
+      <div id="form-container" class="form-box hidden">
+        <form id="loginForm">
+          <input id="email" type="email" placeholder="Usuário (E-mail)" required>
+          <input id="senha" type="password" placeholder="Senha" required>
+          <button type="button" onclick="fazerLogin()">ENTRAR</button>
+        </form>
+        <a href="#" onclick="abrirCadastro()">Criar conta</a>
+        <a href="#">Esqueci minha senha</a>
+      </div>
+
+      <!-- Formulário de cadastro -->
+      <div id="cadastro-container" class="form-box hidden">
+        <form id="cadastroForm">
+          <input id="novoEmail" type="email" placeholder="Novo E-mail" required>
+          <input id="novaSenha" type="password" placeholder="Nova Senha" required>
+          <button type="button" onclick="criarUsuario()">Cadastrar</button>
+        </form>
+        <a href="#" onclick="voltarLogin()">Voltar ao Login</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>

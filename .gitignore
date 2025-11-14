@@ -1,0 +1,45 @@
+# Node modules
+/node_modules/
+
+# Logs
+*.log
+logs/
+
+# Env files
+.env
+.env.local
+.env.*.local
+
+# IDEs and editors
+.vscode/
+.idea/
+
+# NPM debug log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# MySQL
+*.sql
+*.sqlite
+*.db
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Build directories (se você tiver builds)
+dist/
+build/
+
+# .next (se você estiver usando Next.js)
+.next/
+
+# Public directories for frontend assets (se necessário)
+public/
+
+# Coverage directory for testing
+coverage/
+
+# Optional: Ignore the server's output folder (por exemplo, logs do servidor)
+output/

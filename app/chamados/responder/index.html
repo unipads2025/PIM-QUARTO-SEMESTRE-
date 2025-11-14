@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Responder ao Chamado</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Synapse Medical - Abertura de Chamado</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+  <div class="topo">RESPONDER AO CHAMADO</div>
+
+  <div class="conteudo">
+    <div class="titulo">
+      Chamado atribuído a: <span id="nomeTecnico">Técnico</span>
+    </div>
+    <div class="descricao" id="descricaoChamado">Descrição do chamado</div>
+
+    <div class="card-chamado" id="cardChamado">
+      <div class="usuario" id="usuarioChamado">Usuário</div>
+      <div class="assunto" id="assuntoChamado">Assunto do chamado</div>
+      <div class="texto" id="textoChamado">Texto do chamado aparecerá aqui...</div>
+    </div>
+
+    <textarea id="respostaTexto" placeholder="Digite sua resposta..." rows="4" style="width:100%;padding:10px;border-radius:8px;border:1px solid #ccc;resize:none;"></textarea>
+
+    <div class="botoes">
+      <select class="atribuir" id="tecnicoSelect" onchange="atribuirOutro()">
+        <option value="">Atribuir a outro técnico</option>
+        <option value="Yasmin Fernandes">Yasmin Fernandes</option>
+        <option value="Beatriz Almeida">Beatriz Almeida</option>
+        <option value="Guilherme Ramos">Guilherme Ramos</option>
+        <option value="Lucas Silva">Lucas Silva</option>
+        <option value="Mariana Costa">Mariana Costa</option>
+      </select>
+
+      <select class="status" id="statusSelect" onchange="alterarStatus()">
+        <option>Status</option>
+        <option>Aberto</option>
+        <option>Em andamento</option>
+        <option>Encerrado</option>
+      </select>
+
+      <button class="responder" onclick="responderChamado()">Responder</button>
+    </div>
+
+    <div id="respostaAdm"></div>
+  </div>
+
+  <script src="./js/script.js"></script>
+</body>
+</html>
+  <script src="./script.js"></script>
+</body>
+</html>

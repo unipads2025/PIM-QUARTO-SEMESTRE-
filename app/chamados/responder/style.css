@@ -1,0 +1,115 @@
+body { 
+    font-family: "Poppins", sans-serif; 
+    background-color: #f7f9fa; 
+    margin:0; 
+    padding:0; 
+}
+
+.topo { 
+    background-color: #2b7a78; 
+    color: white; 
+    padding: 1.2rem; 
+    font-size: 1.3rem; 
+    font-weight: 600; 
+    text-align: center; 
+}
+
+.conteudo { 
+    max-width: 800px; 
+    margin: 40px auto; 
+    background-color: white; 
+    padding: 2rem; 
+    border-radius: 15px; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+}
+
+.titulo { 
+    font-size: 1.5rem; 
+    font-weight: 600; 
+    color: #2b7a78; 
+    margin-bottom: 10px; 
+}
+
+.descricao { 
+    color: #555; 
+    margin-bottom: 20px; 
+    line-height: 1.6; 
+}
+
+.card-chamado { 
+    background-color: #f8f9fa; 
+    border-left: 5px solid #2b7a78; 
+    border-radius: 10px; 
+    padding: 1rem; 
+    margin-bottom: 25px; 
+    transition: background-color 0.3s; 
+}    
+
+.usuario { 
+    font-weight: 600; 
+    font-size: 1.1rem; 
+}
+
+.assunto { 
+    font-weight: 500; 
+    margin-bottom: 0.5rem; 
+    color: #333; 
+}
+
+.texto { 
+    color: #555; 
+    font-size: 0.95rem; 
+}
+
+.botoes { 
+    display: flex; 
+    gap: 10px; 
+    margin-top: 20px; 
+}
+.botoes button, .botoes select { 
+    flex: 1; 
+    padding: 12px; 
+    font-size: 0.95rem; 
+    border-radius: 8px; 
+    border: none; 
+    cursor: pointer; 
+}
+
+.atribuir {
+    background-color: #2b7a78; 
+    color: white; 
+}
+
+.atribuir:hover { 
+    background-color: #1e5957; 
+}
+
+.status { 
+    background-color: #e6e6e6; 
+    color: #333; 
+}
+
+.responder { 
+    background-color: black; 
+    color: white; 
+}
+
+.responder:hover { 
+    background-color: #333; 
+}
+
+.resposta-adm { 
+    background-color: #e8f5e9; 
+    border-left: 4px solid #4caf50; 
+    padding: 1rem; 
+    border-radius: 8px; 
+    margin-top: 20px; 
+}
+
+.resposta-adm strong { 
+    color: #2b7a78; 
+}
+
+.andamento { 
+    background-color: #fff8e1 !important; 
+}

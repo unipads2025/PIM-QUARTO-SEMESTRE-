@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Synapse Medical - Abertura de Chamado</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+
+  <div class="sidebar">
+    <div class="logo">
+      <img src="./assets/logo.png" alt="Logo Synapse" />
+    </div>
+    <div class="menu">
+      <a href="#" class="active">Abertura de Chamado</a>
+      <a href="#" id="meusChamados">Meus Chamados</a>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="header"><h1>Abertura de Chamado</h1></div>
+
+    <div class="form-container">
+      <div id="msg"></div>
+
+      <form id="chamadoForm">
+        <label for="categoria">Categoria do Problema</label>
+        <select id="categoria" required>
+          <option value="">Selecione uma categoria</option>
+          <option value="sistema">Problema em Sistema</option>
+          <option value="infra">Infraestrutura / Rede</option>
+          <option value="impressora">Impressora / Equipamentos</option>
+          <option value="suporte">Dúvidas ou Suporte Geral</option>
+          <option value="outros">Outros</option>
+        </select>
+
+        <label for="descricao">Descrição do Problema</label>
+        <textarea id="descricao" placeholder="Descreva detalhadamente o problema..." required></textarea>
+
+        <label for="anexo">Anexar Arquivo (opcional)</label>
+        <input type="file" id="anexo" />
+
+        <div class="info-box">
+          <div>
+            <label>Prioridade</label>
+            <div class="info-field" id="prioridade">-</div>
+          </div>
+          <div>
+            <label>Técnico Responsável</label>
+            <div class="info-field" id="tecnico">-</div>
+          </div>
+        </div>
+
+        <button type="submit">Enviar Chamado</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="iaModal" class="modal hidden">
+  <div class="modal-content">
+    <h3>Assistente IA</h3>
+
+    <div id="chatIA" class="chat-box"></div>
+
+    <div class="chat-input-area">
+      <input id="msgIA" type="text" placeholder="Digite sua mensagem...">
+      <button onclick="enviarMsgIA()">Enviar</button>
+    </div>
+
+    <button class="close-btn" onclick="fecharIA()">Fechar</button>
+  </div>
+</div>
+
+  <script src="./js/script.js"></script>
+</body>
+</html>
