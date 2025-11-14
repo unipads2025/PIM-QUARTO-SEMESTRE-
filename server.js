@@ -4,12 +4,17 @@ import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import bcrypt from "bcrypt";
 import mysql from "mysql2/promise";
+import OpenAI from "openai";
 
 dotenv.config();
 
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
+
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY
+});
 
 // DB
 const db = await mysql.createPool({
@@ -99,6 +104,30 @@ app.post("/api/enviar-para-funcionario", async (req, res) => {
   }
 });
 
+app.post("/api/responder"), async (req, res) => {
+  try {
+    const { mensagem } = req.body;
+
+    if(!mensagem) {
+      return res.status(400).json({ error: "Mensagem obrigatória."});
+    }
+    const completion = await openai.chat.completions.create({
+      model: "gpt-4.1-mini",
+      messages: [
+        { role: "system", content: "Você é um assistente técnico educado e direto." },
+        { role: "user", content: mensagem }
+      ]
+    });
+
+    const resposta = completion.choices[0].message.content;
+
+    res.json({ resposta });
+
+  } catch (err) {
+    console.error("Erro IA:", err);
+    res.status(500).json({ error: "Erro ao gerar resposta com IA." });
+  }
+}
 
 // =====================================================
 // FUNCIONÁRIO RESPONDE AO CHAMADO
